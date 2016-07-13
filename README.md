@@ -2,6 +2,8 @@
 
 Explore each directory in this repo for some demos on how Docker works!
 
+_All commands are run from the top level directory of this repo_
+
 ## Basics
 
 A minimal docker container that runs a bash script then exits.
@@ -39,6 +41,7 @@ If you want to run some task in a container, but don't want to save the containe
 
     docker run --rm minimal ls /app
 
+
 ## Adding libraries
 
 Build out image. This will install curl, Node.js, and our npm dependencies
@@ -48,6 +51,7 @@ Build out image. This will install curl, Node.js, and our npm dependencies
 Let's run our new image, it should print out the status of our api
 
     docker run --name api-status node-demo
+
 
 ## Using our own base image
 
@@ -59,6 +63,23 @@ Let's start our application. Since it runs on port 8080, let's expose all ports 
 
     docker run --name hello-app -p 8080:8080 node-demo-app
 
+We can stop the app from another terminal window
+
+    docker kill hello-app
+
+
 ## Local application development
 
-We want to use docker during development without having to rebuild between each change
+We want to use docker during development without having to rebuild between each change.
+
+    docker build -t node-demo-app-dev ./application --file ./application/Dockerfile.dev
+
+Since we're going to mount all of our code, let's install our deps on our machine
+
+    cd application && npm install && cd ..
+
+Let's mount our code as a volume so local changes will appear inside the container.
+
+    docker run --name hello-app-dev -p 8080:8080 -v `pwd`/application/:/app node-demo-app-dev
+
+Now make a change to the application and see the change take effect instantly!

@@ -1,0 +1,11 @@
+FROM node-demo
+
+# Tell our app to run on 8080 and expose it
+ENV PORT 8080
+EXPOSE 8080
+
+# Install nodemon globally to restart our app during dev
+RUN npm install -g nodemon
+
+# Override our base containers command since we're using nodemon now
+CMD nodemon /app/index.js
