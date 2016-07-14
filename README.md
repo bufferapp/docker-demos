@@ -83,3 +83,15 @@ Let's mount our code as a volume so local changes will appear inside the contain
     docker run --name hello-app-dev -p 8080:8080 -v `pwd`/application/:/app node-demo-app-dev
 
 Now make a change to the application and see the change take effect instantly!
+
+## Using images from Docker Hub
+
+We don't always need to create our own images from a base Linux distro. We can find images
+on Docker hub which have some of our programming languages or libraries pre-installed. This
+makes development way faster.
+
+    docker build -t golang-app ./docker-hub
+
+Now we can run out image
+
+    docker run --name my-app -p 8080:8080 golang-app
