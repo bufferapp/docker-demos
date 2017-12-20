@@ -30,7 +30,7 @@ And also quickly re-run that existing container
 
 We also can use `docker run` to create a new container that overrides the default command:
 
-    docker run --name goodbye echo "Goodbye"
+    docker run --name goodbye minimal echo "Goodbye"
 
 Both containers can be run again by name
 
