@@ -92,6 +92,6 @@ makes development way faster.
 
     docker build -t golang-app ./docker-hub
 
-Now we can run out image
+Now we can run our image
 
     docker run --name my-app -p 8080:8080 golang-app
