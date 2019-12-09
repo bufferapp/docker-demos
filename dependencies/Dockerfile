@@ -5,7 +5,7 @@ FROM debian:jessie
 RUN apt-get update && apt-get -y install curl
 
 # Let's install Node.js
-RUN curl -sL https://deb.nodesource.com/setup_6.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
 RUN apt-get install -y nodejs
 
 # Add all of our application code
